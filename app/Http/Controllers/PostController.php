@@ -58,7 +58,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('posts/edit');
     }
 
     /**
@@ -70,7 +70,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        
     }
 
     /**

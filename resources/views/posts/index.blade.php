@@ -23,7 +23,7 @@
                             <li>
                                 <a href="#">{{$data->title}}</a>
                                 @can('edit post')
-                                    <a href="" class="float-right">Edit</a>
+                                    <a href="{{ route('editPost') }}" class="float-right">Edit</a>
                                 @endcan
                             </li>
                         </ul>

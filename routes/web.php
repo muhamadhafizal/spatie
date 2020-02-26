@@ -21,4 +21,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //Post
 Route::get('/post', 'PostController@index')->name('post');
-Route::get('/post/add', 'PostController@create')->name('addPost');
+Route::get('/post/add', 'PostController@create')->name('addPost')->middleware('permission:write post');
+Route::get('/post/edit', 'PostController@edit')->name('editPost')->middleware('permission:edit post');
