@@ -6,9 +6,9 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Posts Dashboard
-                @role('writer|admin')
+                @can('write post')
                 <a class="float-right" href="{{ route('addPost') }}">Add</a>
-                @endrole
+                @endcan
                 </div>
                 
                 <div class="card-body">
