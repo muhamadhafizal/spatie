@@ -26,27 +26,67 @@ class HomeController extends Controller
      */
     public function index()
     {
+        //Create role
         //Role::create(['name'=>'editor']);
         //Role::create(['name'=>'publisher']);
         //Role::create(['name'=>'admin']);
+
+        //Create post
         //Permission::create(['name'=> 'publish post']);
-        //$user = auth()->user();
-        //$user->removeRole('writer');
-        //$user->revokePermissionTo('edit post');
+
+        //User
+        $user = auth()->user();
+
+        //Find Permission and role
         //$permission = Permission::findById(2);
         //$role = Role::findById(1);
+        //$role = Role::findById(4);
+        //$permission = Permission::findById(3);
+        //$role = Role::findById(4);
+
+        //Give Permission
         //$role->givePermissionTo($permission);
         //$user->givePermissionTo('edit post');
-        //$role = Role::findById(4);
-        //$user->assignRole($role);
         //$permission = $user->permissions;
+        //$user->assignRole($role);
+        //$role->givePermissionTo($permission);
+
+        //Remove or revoke permission
+        //$user->removeRole('writer');
+        //$user->revokePermissionTo('edit post');
+
         //return response()->json($permission);
         //return User::permission('edit post')->get();
 
-        //$permission = Permission::findById(3);
-        //$role = Role::findById(4);
-        //$role->givePermissionTo($permission);
+        //Flow How to assign roles to user
+        //1st Find which Roles
+        //$role = Role::findById(1);
+        //2nd get user id
+        //$user = auth()->user();
+        //3rd assign user to role
+        //$user->assignRole($role);
 
-        return view('home');
+        //Flow How to assign permission to user
+        //1st Find which Permission
+        //$permission = Permission::findById(2);
+        //2nd get user id
+        //$user = $auth()->user();
+        //3rd assign user to permission
+        //$user->givePermissionTo($permission);
+
+
+        //Details user permission
+        //$permission = $user->getDirectPermissions();
+        //$permission = $user->getPermissionsViaRoles();
+        $permission = $user->getAllPermissions();
+        return $permission;
+        //return view('home');
     }
+
+    //create new route
+    //How to assign roles to the user.
+    //1st need to get userid
+    //2nd need to get permission or role id
+    //3rd post to table permission and role
+    //4th once assign new role make sure look into how they want to remove the permission
 }
