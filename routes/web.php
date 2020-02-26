@@ -23,3 +23,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/post', 'PostController@index')->name('post');
 Route::get('/post/add', 'PostController@create')->name('addPost')->middleware('permission:write post');
 Route::get('/post/edit', 'PostController@edit')->name('editPost')->middleware('permission:edit post');
+
+//Role And Permission
+Route::get('/role', 'HomeController@role');
+Route::get('/permission', 'HomeController@permission');
+Route::get('/assign/role', 'HomeController@assignrole');
+Route::get('/assign/permission', 'HomeController@assignpermission');
+Route::get('userstatus', 'HomeController@status');

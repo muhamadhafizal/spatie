@@ -83,6 +83,55 @@ class HomeController extends Controller
         //return view('home');
     }
 
+    public function role(){
+
+        $role = Role::all();
+        return response()->json($role);
+
+    }
+
+    public function permission(){
+        $permission = Permission::all();
+        return response()->json($permission);
+    }
+
+    public function assignrole(Request $request){
+
+        $userid = $request->input('userid');
+        $roleid = $request->input('roleid');
+
+        $user = User::find($userid);
+        $role = Role::findById($roleid);
+        $user->assignRole($role);
+
+        $permission = $user->getAllPermissions();
+        return response()->json($permission);
+
+    }
+
+    public function assignpermission(Request $request){
+        $userid = $request->input('userid');
+        $permissionid = $request->input('permissionid');
+
+        $user = User::find($userid);
+        $permission = Permission::findById($permissionid);
+        $user->givePermissionTo($permission);
+
+        $result = $user->getAllPermissions();
+        return response()->json($result);
+
+    }
+
+    public function status(Request $request){
+
+        $id = $request->input('id');
+
+        $user = User::find($id);
+        $data = $user->getAllPermissions();
+        return response()->json($data);
+
+    }
+
     //create new route
     //How to assign roles to the user.
     //1st need to get userid
